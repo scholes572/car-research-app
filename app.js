@@ -8,3 +8,20 @@ searchBtn.addEventListener("click", () => {
     fetchCarData(query);
   }
 });
+
+async function fetchCarData(query) {
+  try {
+    const res = await fetch(`https://api.api-ninjas.com/v1/cars?model=${query}`, {
+      method: "GET",
+      headers: {
+        "X-Api-Key": "u5FfzGHDXMP3pItwVGn4og==GpM37jsM"
+      }
+    });
+
+    const data = await res.json();
+    displayResults(data);
+  } catch (error) {
+    console.error("Failed to fetch data:", error);
+    resultsSection.innerHTML = "<p>Failed to load car data. Try again later.</p>";
+  }
+}
