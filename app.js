@@ -1,6 +1,6 @@
 const searchBtn = document.getElementById("searchBtn");
 const searchInput = document.getElementById("searchInput");
-const resultsSectionn= document.getElementById("results");
+const resultsSection= document.getElementById("results");
 
 searchBtn.addEventListener("click", () => {
   const query = searchInput.value.trim();
@@ -45,9 +45,15 @@ function displayResults(cars) {
 cars.forEach(car => {
     const card = document.createElement("div");
     card.className = "result-card"    
-});
+
     card.innerHTML = `
       <img src="https://via.placeholder.com/300x200?text=${car.make}" alt="${car.make}" />
       <h3>${car.make} ${car.model}</h3>
+      <p><strong>Year:</strong> ${car.year || "N/A"}</p>
+      <p><strong>Class:</strong> ${car.class || "N/A"}</p>
+      <p><strong>Transmission:</strong> ${car.transmission || "N/A"}</p>
+      <p><strong>Fuel Type:</strong> ${car.fuel_type || "N/A"}</p>
     `;
+    resultsSection.appendChild(card);
 
+});
