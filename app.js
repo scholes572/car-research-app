@@ -33,3 +33,7 @@ function displayResults(cars) {
         return;
     }
 }
+cars.forEach(car => {
+    const card = document.createElement("div");
+    card.className = "result-card"    
+});
