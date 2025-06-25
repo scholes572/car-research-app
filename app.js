@@ -7,6 +7,7 @@ searchBtn.addEventListener("click", () => {
   if (query !== "") {
     fetchCarData(query);
   }
+});
   searchInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     const query = searchInput.value.trim();
@@ -15,10 +16,8 @@ searchBtn.addEventListener("click", () => {
     }
   }
 });
-
-});
-
 async function fetchCarData(query) {
+    resultsSection.innerHTML = "<p>Loading...</p>"
   try {
     const res = await fetch(`https://api.api-ninjas.com/v1/cars?model=${query}`, {
       method: "GET",
@@ -29,6 +28,7 @@ async function fetchCarData(query) {
 
     const data = await res.json();
     displayResults(data);
+    searchInput.value = "";
   } catch (error) {
     console.error("Failed to fetch data:", error);
     resultsSection.innerHTML = "<p>Failed to load car data. Try again later.</p>";
@@ -41,7 +41,6 @@ function displayResults(cars) {
         resultsSection.innerHTML = "<P>No results found.</p>";
         return;
     }
-}
 cars.forEach(car => {
     const card = document.createElement("div");
     card.className = "result-card"    
@@ -56,4 +55,5 @@ cars.forEach(car => {
     `;
     resultsSection.appendChild(card);
 
-});
+  });
+}
