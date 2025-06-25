@@ -49,3 +49,23 @@ button:hover {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
+.result-card {
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.result-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+.result-card h3 {
+  margin: 10px 0 5px;
+  font-size: 1.2rem;
+}
+.result-card p {
+  font-size: 0.9rem;
+  color: #666;
+}
