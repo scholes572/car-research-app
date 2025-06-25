@@ -25,3 +25,11 @@ async function fetchCarData(query) {
     resultsSection.innerHTML = "<p>Failed to load car data. Try again later.</p>";
   }
 }
+function displayResults(cars) {
+    resultsSection.innerHTML = "";
+
+    if (!cars || cars.length === 0) {
+        resultsSection.innerHTML = "<P>No results found.</p>";
+        return;
+    }
+}
