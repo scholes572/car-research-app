@@ -69,3 +69,16 @@ button:hover {
   font-size: 0.9rem;
   color: #666;
 }
+#clearBtn {
+  padding: 10px 15px;
+  background-color: #999;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#clearBtn:hover {
+  background-color: #777;
+}
+
