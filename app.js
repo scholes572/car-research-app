@@ -57,4 +57,7 @@ cars.forEach(car => {
     resultsSection.appendChild(card);
 
   });
+clearBtn.addEventListener("click", () => {
+  resultsSection.innerHTML = "";
+});
 }
