@@ -1,6 +1,7 @@
 const searchBtn = document.getElementById("searchBtn");
 const searchInput = document.getElementById("searchInput");
 const resultsSection= document.getElementById("results");
+const clearBtn = document.getElementById("clearBtn");
 
 searchBtn.addEventListener("click", () => {
   const query = searchInput.value.trim();
