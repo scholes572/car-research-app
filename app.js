@@ -37,3 +37,7 @@ cars.forEach(car => {
     const card = document.createElement("div");
     card.className = "result-card"    
 });
+    card.innerHTML = `
+      <img src="https://via.placeholder.com/300x200?text=${car.make}" alt="${car.make}" />
+      <h3>${car.make} ${car.model}</h3>
+    `;
