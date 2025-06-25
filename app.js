@@ -7,6 +7,15 @@ searchBtn.addEventListener("click", () => {
   if (query !== "") {
     fetchCarData(query);
   }
+  searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    const query = searchInput.value.trim();
+    if (query !== "") {
+      fetchCarData(query);
+    }
+  }
+});
+
 });
 
 async function fetchCarData(query) {
@@ -41,3 +50,4 @@ cars.forEach(car => {
       <img src="https://via.placeholder.com/300x200?text=${car.make}" alt="${car.make}" />
       <h3>${car.make} ${car.model}</h3>
     `;
+
