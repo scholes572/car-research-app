@@ -14,15 +14,22 @@ header {
   margin-bottom: 30px;
 }
 
-h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
+header h1 {
+  font-size: 2.5rem;
+  color: #0066cc;
 }
+
+header p {
+  font-size: 1rem;
+  color: #444;
+}
+
 .search section {
   display: flex;
   justify-content: center;
   gap: 10px;
   margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
 input[type="text"] {
@@ -48,6 +55,9 @@ button:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 10px;
 }
 .result-card {
   background-color: white;
@@ -80,5 +90,13 @@ button:hover {
 
 #clearBtn:hover {
   background-color: #777;
+}
+.results section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 10px;
 }
 
