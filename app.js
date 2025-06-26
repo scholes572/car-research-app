@@ -111,3 +111,7 @@ async function fetchCarData(query) {
     hideLoader();
   }
 }
+clearBtn.addEventListener("click", () => {
+  searchInput.value = "";
+  resultsSection.innerHTML = "";
+});
