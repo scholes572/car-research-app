@@ -1,0 +1,44 @@
+{
+  "cars": [
+    {
+      "id": 1,
+      "make": "Toyota",
+      "model": "Corolla",
+      "build": "LE",
+      "price": 22000,
+      "dateOfManufacture": "2022-05-12"
+    },
+    {
+      "id": 2,
+      "make": "Honda",
+      "model": "Civic",
+      "build": "Sport",
+      "price": 24500,
+      "dateOfManufacture": "2023-02-20"
+    },
+    {
+      "id": 3,
+      "make": "Ford",
+      "model": "Mustang",
+      "build": "GT",
+      "price": 39000,
+      "dateOfManufacture": "2021-10-08"
+    },
+    {
+      "id": 4,
+      "make": "Tesla",
+      "model": "Model 3",
+      "build": "Performance",
+      "price": 52990,
+      "dateOfManufacture": "2023-07-01"
+    },
+    {
+      "id": 5,
+      "make": "BMW",
+      "model": "X5",
+      "build": "xDrive40i",
+      "price": 61000,
+      "dateOfManufacture": "2022-11-17"
+    }
+  ]
+}
