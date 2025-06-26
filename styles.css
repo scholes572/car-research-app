@@ -24,7 +24,7 @@ header p {
   color: #444;
 }
 
-.search section {
+.search-section {
   display: flex;
   justify-content: center;
   gap: 10px;
