@@ -83,3 +83,14 @@ function fetchCars(query = "") {
       resultsSection.innerHTML = "<p>Failed to load data. Try again later.</p>";
     });
 }
+function loadRandomCars() {
+  fetch(API_URL)
+    .then(res => res.json())
+    .then(data => {
+      const randomCars = data.sort(() => 0.5 - Math.random()).slice(0, 3);
+      displayResults(randomCars);
+    })
+    .catch(err => {
+      console.error("Error loading random cars:", err);
+    });
+}
