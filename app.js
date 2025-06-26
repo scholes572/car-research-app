@@ -60,6 +60,23 @@ cars.forEach(car => {
 clearBtn.addEventListener("click", () => {
   resultsSection.innerHTML = "";
 });
+async function fetchRandomCars() {
+  try {
+    const res = await fetch("https://api.api-ninjas.com/v1/cars?limit=6", {
+      method: "GET",
+      headers: {
+        "X-Api-Key": "u5FfzGHDXMP3pItwVGn4og==GpM37jsM"
+      }
+    });
+
+    const data = await res.json();
+    displayResults(data);
+  } catch (error) {
+    console.error("Failed to fetch random cars:", error);
+    resultsSection.innerHTML = "<p>Unable to load featured cars. Try again later.</p>";
+  }
+}
+
 window.addEventListener("DOMContentLoaded", () => {
   fetchRandomCars();
 });
