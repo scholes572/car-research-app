@@ -6,6 +6,11 @@ const loader = document.getElementById("loader");
 const modal = document.getElementById("carModal");
 const modalBody = document.getElementById("modalBody");
 const closeModalBtn = document.getElementById("closeModal");
+const loadMoreBtn = document.getElementById("loadMoreBtn");
+let currentIndex = 0;
+const carsPerPage = 3;
+let allCars = [];
+
 
 function openModal(car) {
   modalBody.innerHTML = `
@@ -64,6 +69,9 @@ function displayResults(cars) {
     });
 
     resultsSection.appendChild(card);
+  });
+}
+
 function fetchCars(query = "") {
   showLoader();
   let url = API_URL;
@@ -75,27 +83,24 @@ function fetchCars(query = "") {
   fetch(url)
     .then(res => res.json())
     .then(data => {
-      hideLoader();
-      displayResults(data);
-    })
-    .catch(err => {
-      console.error("Fetch error:", err);
-      hideLoader();
-      resultsSection.innerHTML = "<p>Failed to load data. Try again later.</p>";
-    });
-}
+      allCars = data;
+      currentIndex = 0;
+      resultsSection.innerHTML = "";
+      loadMoreBtn.style.display = "block";
+      showNextCars();
     });
 }
 function loadRandomCars() {
   fetch(API_URL)
     .then(res => res.json())
     .then(data => {
-      const randomCars = data.sort(() => 0.5 - Math.random()).slice(0, 3);
-      displayResults(randomCars);
-    })
-    .catch(err => {
-      console.error("Error loading random cars:", err);
-    });
+    allCars = data.sort(() => 0.5 - Math.random());
+    currentIndex = 0;
+    resultsSection.innerHTML = "";
+    loadMoreBtn.style.display = "block";
+    showNextCars();
+  })
+
 }
 searchBtn.addEventListener("click", () => {
   const query = searchInput.value.trim().toLowerCase();
@@ -112,3 +117,14 @@ clearBtn.addEventListener("click", () => {
 window.addEventListener("DOMContentLoaded", () => {
   loadRandomCars();
 });
+function showNextCars() {
+  const nextCars = allCars.slice(currentIndex, currentIndex + carsPerPage);
+  displayResults(nextCars, true); 
+  currentIndex += carsPerPage;
+
+  if (currentIndex >= allCars.length) {
+    loadMoreBtn.style.display = "none";
+  }
+}
+loadMoreBtn.addEventListener("click", showNextCars);
+
