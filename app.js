@@ -94,3 +94,15 @@ function loadRandomCars() {
       console.error("Error loading random cars:", err);
     });
 }
+searchBtn.addEventListener("click", () => {
+  const query = searchInput.value.trim().toLowerCase();
+  if (query) {
+    fetchCars(query);
+  }
+});
+
+clearBtn.addEventListener("click", () => {
+  searchInput.value = "";
+  resultsSection.innerHTML = "";
+  loadRandomCars();
+});
