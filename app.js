@@ -43,3 +43,43 @@ function displayResults(cars) {
     resultsSection.appendChild(card);
   });
 }
+function fetchCars(query = "") {
+  showLoader();
+  let url = API_URL;
+
+  if (query) {
+    url += `?q=${query}`;
+  }
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      hideLoader();
+      displayResults(data);
+    })
+    .catch(err => {
+      console.error("Fetch error:", err);
+      hideLoader();
+      resultsSection.innerHTML = "<p>Failed to load data. Try again later.</p>";
+    });
+}
+function fetchCars(query = "") {
+  showLoader();
+  let url = API_URL;
+
+  if (query) {
+    url += `?q=${query}`;
+  }
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      hideLoader();
+      displayResults(data);
+    })
+    .catch(err => {
+      console.error("Fetch error:", err);
+      hideLoader();
+      resultsSection.innerHTML = "<p>Failed to load data. Try again later.</p>";
+    });
+}
