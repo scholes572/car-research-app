@@ -3,6 +3,24 @@ const searchBtn = document.getElementById("searchBtn");
 const clearBtn = document.getElementById("clearBtn");
 const resultsSection = document.getElementById("results");
 const loader = document.getElementById("loader");
+const modal = document.getElementById("carModal");
+const modalBody = document.getElementById("modalBody");
+const closeModalBtn = document.getElementById("closeModal");
+
+function openModal(car) {
+  modalBody.innerHTML = `
+    <img src="https://source.unsplash.com/500x250/?${car.make}-${car.model}-car" />
+    <h2>${car.make} ${car.model}</h2>
+    <p><strong>Build:</strong> ${car.build}</p>
+    <p><strong>Price:</strong> $${car.price.toLocaleString()}</p>
+    <p><strong>Date of Manufacture:</strong> ${car.dateOfManufacture}</p>
+  `;
+  modal.classList.remove("hidden");
+}
+
+closeModalBtn.addEventListener("click", function () {
+  modal.classList.add("hidden");
+});
 
 function showLoader() {
   loader.classList.remove("hidden");
@@ -40,9 +58,12 @@ function displayResults(cars) {
     card.appendChild(image);
     card.appendChild(title);
     card.appendChild(details);
+
+    card.addEventListener("click", function () {
+      openModal(car);
+    });
+
     resultsSection.appendChild(card);
-  });
-}
 function fetchCars(query = "") {
   showLoader();
   let url = API_URL;
@@ -63,24 +84,6 @@ function fetchCars(query = "") {
       resultsSection.innerHTML = "<p>Failed to load data. Try again later.</p>";
     });
 }
-function fetchCars(query = "") {
-  showLoader();
-  let url = API_URL;
-
-  if (query) {
-    url += `?q=${query}`;
-  }
-
-  fetch(url)
-    .then(res => res.json())
-    .then(data => {
-      hideLoader();
-      displayResults(data);
-    })
-    .catch(err => {
-      console.error("Fetch error:", err);
-      hideLoader();
-      resultsSection.innerHTML = "<p>Failed to load data. Try again later.</p>";
     });
 }
 function loadRandomCars() {
