@@ -2,6 +2,7 @@ const searchBtn = document.getElementById("searchBtn");
 const searchInput = document.getElementById("searchInput");
 const resultsSection= document.getElementById("results");
 const clearBtn = document.getElementById("clearBtn");
+const loader = document.getElementById("loader");
 
 searchBtn.addEventListener("click", () => {
   const query = searchInput.value.trim();
@@ -81,4 +82,32 @@ window.addEventListener("DOMContentLoaded", () => {
   fetchRandomCars();
 });
 
+}
+function showLoader() {
+  loader.classList.remove("hidden");
+}
+
+function hideLoader() {
+  loader.classList.add("hidden");
+}
+async function fetchCarData(query) {
+  showLoader();
+  resultsSection.innerHTML = "";
+
+  try {
+    const res = await fetch(`https://api.api-ninjas.com/v1/cars?model=${query}`, {
+      method: "GET",
+      headers: {
+        "X-Api-Key": "u5FfzGHDXMP3pItwVGn4og==GpM37jsM"
+      }
+    });
+
+    const data = await res.json();
+    displayResults(data);
+  } catch (error) {
+    console.error("Failed to fetch data:", error);
+    resultsSection.innerHTML = "<p>Failed to load car data. Try again later.</p>";
+  } finally {
+    hideLoader();
+  }
 }
