@@ -106,3 +106,6 @@ clearBtn.addEventListener("click", () => {
   resultsSection.innerHTML = "";
   loadRandomCars();
 });
+window.addEventListener("DOMContentLoaded", () => {
+  loadRandomCars();
+});
