@@ -60,4 +60,8 @@ cars.forEach(car => {
 clearBtn.addEventListener("click", () => {
   resultsSection.innerHTML = "";
 });
+window.addEventListener("DOMContentLoaded", () => {
+  fetchRandomCars();
+});
+
 }
